@@ -1,14 +1,20 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import Home from './views/Home.vue';
+import Empty from './views/layouts/Empty.vue';
 
 Vue.use(Router);
 
 export const routes = [
   {
     path: '/',
-    name: 'home',
-    component: Home,
+    component: Empty,
+    children: [
+      {
+        path: '/accounts/signup',
+        name: 'SignUp',
+        component: () => import('./views/pages/SignUp.vue'),
+      },
+    ],
   },
   {
     path: '/about',

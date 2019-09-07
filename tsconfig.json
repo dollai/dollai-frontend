@@ -10,13 +10,15 @@
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "sourceMap": true,
+    "resolveJsonModule": true,
     "baseUrl": ".",
     "skipLibCheck": true,
     "types": [
       "webpack-env",
       "jest",
       "vue",
-      "cypress"
+      "cypress",
+      "types"
     ],
     "paths": {
       "@/*": [
