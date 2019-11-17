@@ -1,0 +1,31 @@
+{
+  "count": 1,
+  "next": "",
+  "previous": null,
+  "results": [
+    {
+      "story": "story1",
+      "uid": "1-1",
+      "prev": null,
+      "transition": {
+        "code": "none"
+      },
+      "style": {
+        "template": "basic"
+      },
+      "attachments": []
+    },
+    {
+      "story": "story1",
+      "uid": "1-2",
+      "prev": "1-1",
+      "transition": {
+        "code": "none"
+      },
+      "style": {
+        "template": "basic"
+      },
+      "attachments": []
+    }
+  ]
+}
