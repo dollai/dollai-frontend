@@ -1,17 +1,22 @@
-[
-  {
-    "code": "player1",
-    "name": "미니어스",
-    "image": ""
-  },
-  {
-    "code": "player1",
-    "name": "꽃순이",
-    "image": ""
-  },
-  {
-    "code": "player3",
-    "name": "독서박사",
-    "image": ""
-  }
-]
+{
+  "count": 1,
+  "next": "",
+  "previous": null,
+  "results": [
+    {
+      "code": "player1",
+      "name": "미니어스",
+      "image": ""
+    },
+    {
+      "code": "player1",
+      "name": "꽃순이",
+      "image": ""
+    },
+    {
+      "code": "player3",
+      "name": "독서박사",
+      "image": ""
+    }
+  ]
+}
