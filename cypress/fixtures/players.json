@@ -6,17 +6,17 @@
     {
       "code": "player1",
       "name": "미니어스",
-      "image": ""
+      "image": "/images/player1.jpg"
     },
     {
       "code": "player2",
       "name": "꽃순이",
-      "image": ""
+      "image": "/images/player2.jpg"
     },
     {
       "code": "player3",
       "name": "독서박사",
-      "image": ""
+      "image": "/images/player3.jpg"
     }
   ]
 }
