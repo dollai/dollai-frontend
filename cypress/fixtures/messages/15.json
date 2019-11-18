@@ -1,0 +1,18 @@
+{
+  "uid": "15",
+  "kind": "default",
+  "scene": "1-2",
+  "players": [
+    "player1",
+  ],
+  "prev": "14",
+  "content": "자 그럼 우선 오늘 숙제 확인은 이것으로 종료하겠습니다.",
+  "transition": {
+    "code": "none"
+  },
+  "style": {
+    "template": "basic"
+  },
+  "attachments": [
+  ]
+}

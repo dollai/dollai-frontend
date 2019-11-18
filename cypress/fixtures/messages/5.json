@@ -1,0 +1,18 @@
+{
+  "uid": "5",
+  "kind": "default",
+  "scene": "1-2",
+  "players": [
+    "player3",
+  ],
+  "prev": "4",
+  "content": "나중에 요약본 공유드릴께요",
+  "transition": {
+    "code": "none"
+  },
+  "style": {
+    "template": "basic"
+  },
+  "attachments": [
+  ]
+}

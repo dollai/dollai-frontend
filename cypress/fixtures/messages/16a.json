@@ -1,0 +1,18 @@
+{
+  "uid": "16a",
+  "kind": "default",
+  "scene": "1-2",
+  "players": [
+    "player2",
+  ],
+  "prev": "15a",
+  "content": "https://www.gamesforthebrain.com/korean/mastercards/",
+  "transition": {
+    "code": "none"
+  },
+  "style": {
+    "template": "link-url"
+  },
+  "attachments": [
+  ]
+}

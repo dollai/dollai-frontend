@@ -1,0 +1,21 @@
+{
+  "uid": "2",
+  "kind": "default",
+  "scene": "1-2",
+  "players": [
+    "player2",
+  ],
+  "prev": "1",
+  "content": "저는 오늘 꽂꽂이 하는 방법 중, 센터피스에 대한 영상을 보고 따라해 봤습니다. 보고 따라해보 니 1시간이 어떻게 지나갔는지 모르겠어요. ^ ^",
+  "transition": {
+    "code": "none"
+  },
+  "style": {
+    "template": "basic"
+  },
+  "attachments": [
+    {
+
+    }
+  ]
+}

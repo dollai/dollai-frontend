@@ -1,0 +1,26 @@
+[
+  {
+    "message": "12",
+    "content": "강남",
+    "number": 1,
+    "next_message": "13",
+    "next_scene": null,
+    "style": {
+      "template": "basic"
+    },
+    "attachments": [
+    ]
+  },
+  {
+    "message": "12",
+    "content": "혜화",
+    "number": 2,
+    "next_message": "13a",
+    "next_scene": null,
+    "style": {
+      "template": "basic"
+    },
+    "attachments": [
+    ]
+  }
+]

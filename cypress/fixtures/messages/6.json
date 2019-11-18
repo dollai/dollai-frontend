@@ -1,0 +1,18 @@
+{
+  "uid": "6",
+  "kind": "default",
+  "scene": "1-2",
+  "players": [
+    "player3",
+  ],
+  "prev": "5",
+  "content": "https://bit.ly/32kaHBL",
+  "transition": {
+    "code": "none"
+  },
+  "style": {
+    "template": "link-url"
+  },
+  "attachments": [
+  ]
+}

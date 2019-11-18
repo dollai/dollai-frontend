@@ -1,0 +1,18 @@
+{
+  "uid": "9",
+  "kind": "default",
+  "scene": "1-2",
+  "players": [
+    "player3",
+  ],
+  "prev": "7",
+  "content": "고기는 육고기 보다는 생선이 두뇌건강에 좋다고 하네요",
+  "transition": {
+    "code": "none"
+  },
+  "style": {
+    "template": "basic"
+  },
+  "attachments": [
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "uid": "3",
+  "kind": "default",
+  "scene": "1-2",
+  "players": [
+    "player2",
+  ],
+  "prev": "2",
+  "content": null,
+  "transition": {
+    "code": "none"
+  },
+  "style": {
+    "template": "youtube-embed"
+  },
+  "attachments": [
+    {
+      "url": "https://youtu.be/t-QEAYfkppI"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "uid": "10",
+  "kind": "default",
+  "scene": "1-2",
+  "players": [
+    "player2",
+  ],
+  "prev": "9",
+  "content": "특히 등푸른 생선! 고등어 !! ᄒᄒ",
+  "transition": {
+    "code": "none"
+  },
+  "style": {
+    "template": "basic"
+  },
+  "attachments": [
+  ]
+}

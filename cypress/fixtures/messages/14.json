@@ -1,0 +1,18 @@
+{
+  "uid": "14",
+  "kind": "default",
+  "scene": "1-2",
+  "players": [
+    "player3",
+  ],
+  "prev": "13",
+  "content": "나중에 거기 주소 좀 알려주세요 !!",
+  "transition": {
+    "code": "none"
+  },
+  "style": {
+    "template": "basic"
+  },
+  "attachments": [
+  ]
+}

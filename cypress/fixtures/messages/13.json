@@ -1,0 +1,18 @@
+{
+  "uid": "013",
+  "kind": "default",
+  "scene": "1-2",
+  "players": [
+    "player2",
+  ],
+  "prev": "012",
+  "content": "아 맞다. 강남이라고 했었어!!",
+  "transition": {
+    "code": "none"
+  },
+  "style": {
+    "template": "basic"
+  },
+  "attachments": [
+  ]
+}

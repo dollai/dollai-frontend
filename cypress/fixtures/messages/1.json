@@ -1,13 +1,9 @@
 {
-  "uid": "001",
+  "uid": "1",
   "kind": "default",
   "scene": "1-1",
   "players": [
-    {
-      "code": "player1",
-      "name": "미니어스",
-      "image": ""
-    }
+    "player1"
   ],
   "prev": null,
   "content": "여러분!!! 오늘 뇌 건강을 위한 숙제는 다들 잘 수행하셨나요?",
