@@ -6,7 +6,10 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
+import { namespace } from 'vuex-class';
 import DetailHeader from './components/DetailHeader.vue';
+
+const settingsStore = namespace('settings');
 
 @Component({
   components: {
@@ -17,8 +20,10 @@ export default class Detail extends Vue {
   @Prop()
   private header!: string;
 
+  @settingsStore.Getter('header') private getterHeader!: string | null;
+
   private get computedHeader(): string | null {
-    return null;
+    return this.header || this.getterHeader || null;
   }
 }
 </script>
