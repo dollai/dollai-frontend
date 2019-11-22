@@ -12,7 +12,9 @@
     "test:e2e": "cypress run --spec 'cypress/integration/dollai/**/*'"
   },
   "dependencies": {
+    "axios": "^0.19.0",
     "core-js": "^2.6.5",
+    "qs": "^6.9.1",
     "vee-validate": "^3.0.4",
     "vue": "^2.6.10",
     "vue-class-component": "^7.0.2",
@@ -24,6 +26,7 @@
   },
   "devDependencies": {
     "@types/jest": "^23.1.4",
+    "@types/qs": "^6.9.0",
     "@vue/cli-plugin-babel": "^3.11.0",
     "@vue/cli-plugin-e2e-cypress": "^3.11.0",
     "@vue/cli-plugin-typescript": "^3.11.0",
