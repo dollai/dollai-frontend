@@ -1,6 +1,5 @@
 <template lang="pug">
   .container
-    | hello world
 </template>
 
 <script lang="ts">
@@ -19,20 +18,19 @@ export default class StoryDetail extends Vue {
   @Prop()
   private header!: string | null;
 
-  @settingsStore.Mutation private updateHeader!: (header: string) => void;
+  @settingsStore.Mutation private updateHeader!: (header: string | null) => void;
   @storyStore.Action('fetchStory') private fetchStoryAction!: (code: string) => Promise<any>;
 
-  private story!: T.IStory;
+  private story: T.IStory | null = null;
 
   private async fetchStory() {
-    // const code = this.$route.params.code;
-    const code = 'story1';
+    const code = this.$route.params.code;
     this.story = await this.fetchStoryAction(code);
   }
 
   private async mounted() {
     await this.fetchStory();
-    this.updateHeader(this.story.name);
+    this.updateHeader(this.story ? this.story.name : null);
   }
 }
 </script>
