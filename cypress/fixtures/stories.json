@@ -13,7 +13,8 @@
       },
       "required_auth": true,
       "status": "published",
-      "attachments": []
+      "attachments": [],
+      "start_scene": "1-1"
     }
   ]
 }

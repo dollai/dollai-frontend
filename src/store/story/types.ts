@@ -9,8 +9,22 @@ export interface IStory {
   required_auth: boolean;
   status: string;
   attachments: string[];
+  start_scene?: string | null;
 }
 
 export interface IStyle {
   template?: string;
+}
+
+export interface IScene {
+  story: string;
+  uid: string;
+  prev: string | null;
+  transition: string | null;
+  style: ITransition;
+  attachments: string[];
+}
+
+export interface ITransition {
+  code: string;
 }

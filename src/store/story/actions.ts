@@ -21,4 +21,9 @@ export default {
     return data.results.find((o) => o.code === code) || null;
   },
 
+  async fetchScene({ commit }, uid: string) {
+    const data: PageNumberPaginationResponse<T.IScene> = require('@/../cypress/fixtures/scenes.json');
+    return data.results.find((o) => o.uid === uid) || null;
+  },
+
 } as ActionTree<IStoryState, IRootState>;
