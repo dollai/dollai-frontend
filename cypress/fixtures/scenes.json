@@ -13,7 +13,8 @@
       "style": {
         "template": "basic"
       },
-      "attachments": []
+      "attachments": [],
+      "start_message": "1"
     },
     {
       "story": "story1",
@@ -25,7 +26,8 @@
       "style": {
         "template": "basic"
       },
-      "attachments": []
+      "attachments": [],
+      "start_message": "2"
     }
   ]
 }

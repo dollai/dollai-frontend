@@ -23,8 +23,27 @@ export interface IScene {
   transition: string | null;
   style: ITransition;
   attachments: string[];
+  start_message?: string | null;
 }
 
 export interface ITransition {
   code: string;
+}
+
+export interface IMessage {
+  uid: string;
+  kind: string;
+  scene: string;
+  next_scene?: string | null;
+  players: IPlayer[];
+  prev: string | null;
+  transition: string | null;
+  style: ITransition;
+  attachments: string[];
+}
+
+export interface IPlayer {
+  code: string;
+  name: string;
+  image: string;
 }

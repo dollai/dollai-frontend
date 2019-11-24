@@ -2,6 +2,7 @@
   "uid": "2",
   "kind": "default",
   "scene": "1-2",
+  "next_scene": null,
   "players": [
     "player2",
   ],

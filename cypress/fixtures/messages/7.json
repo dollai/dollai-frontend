@@ -2,6 +2,7 @@
   "uid": "7",
   "kind": "subjectives",
   "scene": "1-2",
+  "next_scene": null,
   "players": [
     "player1",
   ],
