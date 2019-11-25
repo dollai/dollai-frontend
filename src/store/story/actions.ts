@@ -26,4 +26,8 @@ export default {
     return data.results.find((o) => o.uid === uid) || null;
   },
 
+  async fetchMessage({ commit }, uid: string) {
+    const data: T.IMessage = require(`@/../cypress/fixtures/messages/${uid}.json`);
+    return data;
+  },
 } as ActionTree<IStoryState, IRootState>;
