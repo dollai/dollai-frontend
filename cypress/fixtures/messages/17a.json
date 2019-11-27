@@ -4,7 +4,7 @@
   "scene": "1-4",
   "next_scenes": null,
   "players": [
-    "player3",
+    "player3"
   ],
   "prev": "16a",
   "nexts": ["18a"],

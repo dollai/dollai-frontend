@@ -4,9 +4,9 @@
   "scene": "1-4",
   "next_scenes": null,
   "players": [
-    "player1",
+    "player1"
   ],
-  "prev": "012",
+  "prev": "12",
   "nexts": ["14a"],
   "content": "어? 거기가 아니었던 것 같은데..? 확실한 거죠?",
   "transition": {
