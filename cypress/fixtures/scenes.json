@@ -28,6 +28,32 @@
       },
       "attachments": [],
       "start_message": "2"
+    },
+    {
+      "story": "story1",
+      "uid": "1-3",
+      "prev": "1-2",
+      "transition": {
+        "code": "none"
+      },
+      "style": {
+        "template": "basic"
+      },
+      "attachments": [],
+      "start_message": "13"
+    },
+    {
+      "story": "story1",
+      "uid": "1-4",
+      "prev": "1-2",
+      "transition": {
+        "code": "none"
+      },
+      "style": {
+        "template": "basic"
+      },
+      "attachments": [],
+      "start_message": "13a"
     }
   ]
 }
