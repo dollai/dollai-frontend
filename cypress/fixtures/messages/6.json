@@ -2,11 +2,12 @@
   "uid": "6",
   "kind": "default",
   "scene": "1-2",
-  "next_scene": null,
+  "next_scenes": null,
   "players": [
     "player3",
   ],
   "prev": "5",
+  "nexts": ["7"],
   "content": "https://bit.ly/32kaHBL",
   "transition": {
     "code": "none"

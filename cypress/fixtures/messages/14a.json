@@ -2,11 +2,12 @@
   "uid": "14a",
   "kind": "default",
   "scene": "1-4",
-  "next_scene": null,
+  "next_scenes": null,
   "players": [
     "player3",
   ],
   "prev": "13a",
+  "nexts": ["15a"],
   "content": "바쁘게 살면 가끔씩 긴가민가할 때도 있죠 !! ᄒᄒ",
   "transition": {
     "code": "none"

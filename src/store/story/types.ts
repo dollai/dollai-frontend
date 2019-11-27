@@ -34,9 +34,10 @@ export interface IMessage {
   uid: string;
   kind: string;
   scene: string;
-  next_scene?: string | null;
+  next_scenes?: string[] | null;
   players: IPlayer[];
   prev: string | null;
+  nexts: Array<string | null>;
   transition: string | null;
   style: ITransition;
   attachments: string[];

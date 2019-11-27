@@ -2,11 +2,12 @@
   "uid": "5",
   "kind": "default",
   "scene": "1-2",
-  "next_scene": null,
+  "next_scenes": null,
   "players": [
     "player3",
   ],
   "prev": "4",
+  "nexts": ["6"],
   "content": "나중에 요약본 공유드릴께요",
   "transition": {
     "code": "none"

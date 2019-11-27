@@ -2,11 +2,12 @@
   "uid": "11",
   "kind": "default",
   "scene": "1-2",
-  "next_scene": null,
+  "next_scenes": null,
   "players": [
     "player1",
   ],
   "prev": "10",
+  "nexts": ["12"],
   "content": "아 아 그러고 보니 연자님은 3일 전에도 친구와 함께 고기를 드셨다고 했는데. 거기가 어디였죠?",
   "transition": {
     "code": "none"

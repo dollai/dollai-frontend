@@ -2,11 +2,12 @@
   "uid": "1",
   "kind": "default",
   "scene": "1-1",
-  "next_scene": "1-2",
+  "next_scenes": ["1-2"],
   "players": [
     "player1"
   ],
   "prev": null,
+  "nexts": ["2"],
   "content": "여러분!!! 오늘 뇌 건강을 위한 숙제는 다들 잘 수행하셨나요?",
   "transition": {
     "code": "none"

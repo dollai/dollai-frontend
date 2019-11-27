@@ -2,11 +2,12 @@
   "uid": "17a",
   "kind": "default",
   "scene": "1-4",
-  "next_scene": null,
+  "next_scenes": null,
   "players": [
     "player3",
   ],
   "prev": "16a",
+  "nexts": ["18a"],
   "content": "ᄒᄒ 자 그럼 우선 오늘 숙제 확인은 이것으로 종료하겠습니다.",
   "transition": {
     "code": "none"

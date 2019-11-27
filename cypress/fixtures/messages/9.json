@@ -2,11 +2,12 @@
   "uid": "9",
   "kind": "default",
   "scene": "1-2",
-  "next_scene": null,
+  "next_scenes": null,
   "players": [
     "player3",
   ],
   "prev": "7",
+  "nexts": ["10"],
   "content": "고기는 육고기 보다는 생선이 두뇌건강에 좋다고 하네요",
   "transition": {
     "code": "none"

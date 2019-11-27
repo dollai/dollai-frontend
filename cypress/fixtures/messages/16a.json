@@ -2,11 +2,12 @@
   "uid": "16a",
   "kind": "default",
   "scene": "1-4",
-  "next_scene": null,
+  "next_scenes": null,
   "players": [
     "player2",
   ],
   "prev": "15a",
+  "nexts": ["17a"],
   "content": "https://www.gamesforthebrain.com/korean/mastercards/",
   "transition": {
     "code": "none"

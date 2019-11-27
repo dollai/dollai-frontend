@@ -7,6 +7,7 @@
     "player1",
   ],
   "prev": "15",
+  "nexts": null,
   "content": "그리고 {userNickname}님. 다음번 두뇌건강 숙제는 꼭 신경써주시길 바래요 !!",
   "transition": {
     "code": "none"

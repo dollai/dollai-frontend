@@ -2,11 +2,12 @@
   "uid": "4",
   "kind": "default",
   "scene": "1-2",
-  "next_scene": null,
+  "next_scenes": null,
   "players": [
     "player3",
   ],
   "prev": "3",
+  "nexts": ["5"],
   "content": "전 뇌를 젊어지게 하는 운동을 알려주는 책을 읽었는데. 2장까지 읽었습니다.",
   "transition": {
     "code": "none"

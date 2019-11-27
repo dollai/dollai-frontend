@@ -2,11 +2,12 @@
   "uid": "7",
   "kind": "subjectives",
   "scene": "1-2",
-  "next_scene": null,
+  "next_scenes": null,
   "players": [
     "player1",
   ],
   "prev": "6",
+  "nexts": ["9"],
   "content": "{userNickname}님은 두뇌건강을 위한 숙제를 잘 하셨나요?",
   "transition": {
     "code": "none"
