@@ -1,7 +1,8 @@
 <template lang="pug">
   .container
-    .message(v-for="item in messages")
-      span {{ item.content }}
+    .message-container(@click="nextAction")
+      .message(v-for="item in messages")
+        span {{ item.content }}
 </template>
 
 <script lang="ts">
@@ -23,13 +24,14 @@ export default class StoryDetail extends Vue {
   @settingsStore.Mutation private updateHeader!: (header: string | null) => void;
   @storyStore.Action('fetchStory') private fetchStoryAction!: (code: string) => Promise<any>;
   @storyStore.Action('fetchScene') private fetchSceneAction!: (uid: string) => Promise<any>;
-  @storyStore.Action('fetchMessage') private fetchMessageAction!: (uid: string) => Promise<any>;
+  @storyStore.Action('fetchMessage') private fetchMessageAction!: (opt: {uid: string, params: any}) => Promise<any>;
 
   private story: T.IStory | null = null;
   private scene: T.IScene | null = null;
   private messages: T.IMessage[] = [];
   private idleMessages: T.IMessage[] = [];
   private currentMessageIndex: number = -1;
+  private dispatchTid: number | undefined = undefined;
 
   private async fetchStory() {
     const code = this.$route.params.code;
@@ -47,7 +49,7 @@ export default class StoryDetail extends Vue {
     if (!uid) {
       return;
     }
-    const message = await this.fetchMessageAction(uid);
+    const message = await this.fetchMessageAction({uid});
     this.idleMessages.push(message);
     this.currentMessageIndex = this.messages.length - 1;
   }
@@ -105,10 +107,27 @@ export default class StoryDetail extends Vue {
     console.log(uid);
   }
 
+  private initDispatchMessage() {
+    this.dispatchTid = setInterval(() => {
+      if (!this.idleMessages.length) { return; }
+      this.messages.push(this.idleMessages.splice(0, 1)[0]);
+    }, 200);
+  }
+
   private async mounted() {
+    this.initDispatchMessage();
     await this.fetchStory();
     this.updateHeader(this.story ? this.story.name : null);
     await this.nextAction();
   }
+
+  private beforeDestroy() {
+    clearInterval(this.dispatchTid);
+  }
 }
 </script>
+
+<style lang="stylus">
+  .message-container
+    border: 1px solid #f00
+</style>
