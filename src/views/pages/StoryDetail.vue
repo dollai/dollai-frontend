@@ -24,7 +24,7 @@ export default class StoryDetail extends Vue {
   @settingsStore.Mutation private updateHeader!: (header: string | null) => void;
   @storyStore.Action('fetchStory') private fetchStoryAction!: (code: string) => Promise<any>;
   @storyStore.Action('fetchScene') private fetchSceneAction!: (uid: string) => Promise<any>;
-  @storyStore.Action('fetchMessage') private fetchMessageAction!: (opt: {uid: string, params: any}) => Promise<any>;
+  @storyStore.Action('fetchMessage') private fetchMessageAction!: (opt: {uid: string, params?: any}) => Promise<any>;
 
   private story: T.IStory | null = null;
   private scene: T.IScene | null = null;
@@ -111,6 +111,7 @@ export default class StoryDetail extends Vue {
     this.dispatchTid = setInterval(() => {
       if (!this.idleMessages.length) { return; }
       this.messages.push(this.idleMessages.splice(0, 1)[0]);
+      this.currentMessageIndex = this.messages.length - 1;
     }, 200);
   }
 
