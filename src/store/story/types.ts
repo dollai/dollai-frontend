@@ -41,10 +41,21 @@ export interface IMessage {
   transition: string | null;
   style: ITransition;
   attachments: string[];
+  objective_options?: IObjectiveOption[];
 }
 
 export interface IPlayer {
   code: string;
   name: string;
   image: string;
+}
+
+export interface IObjectiveOption {
+  message: string;
+  content: string;
+  number: number;
+  next_message: string;
+  next_scene: string | null;
+  style: IStyle;
+  attachments: string[];
 }
