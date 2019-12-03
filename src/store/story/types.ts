@@ -59,3 +59,8 @@ export interface IObjectiveOption {
   style: IStyle;
   attachments: string[];
 }
+
+export interface ISubjectiveForm {
+  message: string | null;
+  content: string;
+}

@@ -10,6 +10,15 @@
           v-for="opt in item.objective_options"
         )
           .option(@click="chooseObjectiveOption(opt)") {{ opt.content }}
+
+      .subjectives-form-container(v-show="isVisibleSubjectiveForm")
+        form.subjectives-form(
+          v-model="subjectiveForm"
+        )
+          h4 내 습관 실행 내용 입력하기
+          textarea(placeholder="글을 입력해 주세요.")
+          button(@click.prevent="submitSubjectiveForm") 완료
+          button(@click.prevent="cancelSubjectiveForm") 취소
 </template>
 
 <script lang="ts">
@@ -41,6 +50,11 @@ export default class StoryDetail extends Vue {
   private currentMessageIndex: number = -1;
   private dispatchTid: number | undefined = undefined;
   private objectiveOptions: T.IObjectiveOption[] = [];
+  private isVisibleSubjectiveForm: boolean = false;
+  private subjectiveForm: T.ISubjectiveForm = {
+    message: null,
+    content: '',
+  };
 
   private async fetchStory() {
     const code = this.$route.params.code;
@@ -107,15 +121,28 @@ export default class StoryDetail extends Vue {
   }
 
   private async nextMessage() {
+    if (this.isVisibleSubjectiveForm) { return; }
     if (this.currentMessageIndex === -1 || !this.messages.length) { return; }
     if (!this.scene) { return; }
 
     const message = this.currentMessage as T.IMessage;
     if (!message.nexts || !message.nexts.length) { return; }
 
-    if (message.kind === 'default' || message.kind === 'subjectives') {
+    if (message.kind === 'default') {
       await this.fetchMessage(message.nexts[0]);
+    } else if (message.kind === 'subjectives') {
+      this.isVisibleSubjectiveForm = true;
     }
+  }
+
+  private async submitSubjectiveForm() {
+    this.isVisibleSubjectiveForm = false;
+    const message = this.currentMessage as T.IMessage;
+    await this.fetchMessage(message.nexts[0]);
+  }
+
+  private cancelSubjectiveForm() {
+    this.isVisibleSubjectiveForm = false;
   }
 
   private initDispatchMessage() {
