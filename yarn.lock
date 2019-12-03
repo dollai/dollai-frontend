@@ -1449,6 +1449,11 @@ anymatch@^2.0.0:
     micromatch "^3.1.4"
     normalize-path "^2.1.1"
 
+app-root-path@^2.2.1:
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/app-root-path/-/app-root-path-2.2.1.tgz#d0df4a682ee408273583d43f6f79e9892624bc9a"
+  integrity sha512-91IFKeKk7FjfmezPKkwtaRvSpnUc4gDwPAjA1YZ9Gn0q0PPeW+vbeUsZuyDwjI7+QTHhcLen2v25fi/AmhvbJA==
+
 append-transform@^0.4.0:
   version "0.4.0"
   resolved "https://registry.npm.taobao.org/append-transform/download/append-transform-0.4.0.tgz#d76ebf8ca94d276e247a36bad44a4b74ab611991"
@@ -11622,6 +11627,14 @@ vue-property-decorator@^8.1.0:
   integrity sha1-rIlelQjuG/huOihWjZTYQsLI5C8=
   dependencies:
     vue-class-component "^7.0.1"
+
+vue-pug-alias@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/vue-pug-alias/-/vue-pug-alias-1.0.3.tgz#f3deed3252ff6be368c478d464c450406fb380f2"
+  integrity sha512-shJ5SiO2N+9aInoy3/VNnLx0Rx5+HvvLLzFurP5RJKWefV50e/I7VdMnRNcB9X4HZhqgSweOXXNQnNjU/hp+kw==
+  dependencies:
+    app-root-path "^2.2.1"
+    pug-plain-loader "^1.0.0"
 
 vue-router@^3.0.3:
   version "3.1.3"

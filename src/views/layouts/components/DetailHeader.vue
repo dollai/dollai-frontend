@@ -1,7 +1,8 @@
 <template lang="pug">
   .header-container
     .wrapper
-      h2 doll.ai
+      h2.logo
+        img.logo-image(src="/images/logo.svg" alt="doll.ai")
     h3.title(v-if="header") {{ header }}
 </template>
 
@@ -17,3 +18,16 @@ export default class DetailHeader extends Vue {
   private header!: string | null;
 }
 </script>
+
+<style lang="stylus">
+.header-container
+  height 64px
+
+.logo
+  padding 12px 0
+  text-align center
+
+.logo-image
+  width 100px
+  height 40px
+</style>
