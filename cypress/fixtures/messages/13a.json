@@ -22,7 +22,7 @@
       "message": "13a",
       "content": "아, 강남이었다",
       "number": 1,
-      "next_message": "12",
+      "next_message": "14a",
       "next_scene": null,
       "style": {
         "template": "basic"
@@ -34,7 +34,7 @@
       "message": "13a",
       "content": "혜화 맞는데",
       "number": 2,
-      "next_message": "12",
+      "next_message": "14a",
       "next_scene": null,
       "style": {
         "template": "basic"
@@ -46,7 +46,7 @@
       "message": "13a",
       "content": "기억이 잘 안 나",
       "number": 1,
-      "next_message": "12",
+      "next_message": "14a",
       "next_scene": null,
       "style": {
         "template": "basic"

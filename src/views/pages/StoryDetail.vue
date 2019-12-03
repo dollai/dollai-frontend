@@ -5,11 +5,11 @@
         v-for="item in messages"
       )
         span {{ item.content }}
-        span(
-          v-if="item.kind === 'objectives' && item.objective_options"
+        .objective-options(
+          v-if="isVisibleObjectiveOptions(item)"
           v-for="opt in item.objective_options"
         )
-          | {{ opt.content }}
+          .option(@click="chooseObjectiveOption(opt)") {{ opt.content }}
 </template>
 
 <script lang="ts">
@@ -72,6 +72,13 @@ export default class StoryDetail extends Vue {
       && (!message.nexts || !message.nexts.length);
   }
 
+  private isVisibleObjectiveOptions(message: T.IMessage) {
+    return message.kind === 'objectives'
+      && message.objective_options
+      && this.currentMessage
+      && this.currentMessage.uid === message.uid;
+  }
+
   private get currentMessage(): T.IMessage | null {
     return this.currentMessageIndex === -1 || !this.messages.length
       ? null
@@ -114,9 +121,21 @@ export default class StoryDetail extends Vue {
   private initDispatchMessage() {
     this.dispatchTid = setInterval(() => {
       if (!this.idleMessages.length) { return; }
-      this.messages.push(this.idleMessages.splice(0, 1)[0]);
-      this.currentMessageIndex = this.messages.length - 1;
+      this.moveToNextMessage();
     }, 200);
+  }
+
+  private moveToNextMessage() {
+    this.messages.push(this.idleMessages.splice(0, 1)[0]);
+    this.currentMessageIndex = this.messages.length - 1;
+  }
+
+  private async chooseObjectiveOption(item: T.IObjectiveOption) {
+    if (item.next_scene !== null) {
+      await this.fetchSceneAction(item.next_scene);
+    }
+    await this.fetchMessage(item.next_message);
+    this.moveToNextMessage();
   }
 
   private async mounted() {
