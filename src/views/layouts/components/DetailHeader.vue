@@ -3,7 +3,8 @@
     .wrapper
       h2.logo
         img.logo-image(src="/images/logo.svg" alt="doll.ai")
-    h3.title(v-if="header") {{ header }}
+      .btn-gnb
+        img.icon.icon-hamburg(src="/images/icon-hamburg-menu.svg" alt="")
 </template>
 
 <script lang="ts">
@@ -19,10 +20,7 @@ export default class DetailHeader extends Vue {
 }
 </script>
 
-<style lang="stylus">
-.header-container
-  height 64px
-
+<style lang="stylus" scoped>
 .logo
   padding 12px 0
   text-align center
@@ -30,4 +28,13 @@ export default class DetailHeader extends Vue {
 .logo-image
   width 100px
   height 40px
+
+.btn-gnb
+  position absolute
+  top 0
+  right 0
+  transform translate(0, 50%)
+  width 34px
+  height 34px
+
 </style>

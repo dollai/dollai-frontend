@@ -1,5 +1,7 @@
 <template lang="pug">
   .container
+    h3.title(v-if="title") {{ title }}
+
     .message-container(@click="nextAction")
       .message(
         v-for="item in messages"
@@ -55,6 +57,10 @@ export default class StoryDetail extends Vue {
     message: null,
     content: '',
   };
+
+  private get title(): string | null {
+    return this.story ? this.story.name : null;
+  }
 
   private async fetchStory() {
     const code = this.$route.params.code;
@@ -178,7 +184,13 @@ export default class StoryDetail extends Vue {
 }
 </script>
 
-<style lang="stylus">
-  .message-container
-    border: 1px solid #f00
+<style lang="stylus" scoped>
+.message-container
+  border: 1px solid #f00
+
+.title
+  background-color #000
+  color #fff
+  font-size 0.8125rem
+  padding 2px
 </style>

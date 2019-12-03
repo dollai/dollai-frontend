@@ -1,7 +1,7 @@
 <template lang="pug">
   .detail-layer
-    detail-header(:header="computedHeader")
-    router-view
+    detail-header.detail-header
+    router-view.detail-content
 </template>
 
 <script lang="ts">
@@ -27,3 +27,19 @@ export default class Detail extends Vue {
   }
 }
 </script>
+
+<style lang="stylus" scoped>
+@import '~@/assets/styles/variables.styl'
+
+.detail-header
+  height $navbar-height
+  position fixed
+  top 0
+  left 50%
+  transform translate(-50%, 0)
+  width $break-small-min
+  min-width 360px
+
+.detail-content
+  margin $navbar-height 0 0 0
+</style>
