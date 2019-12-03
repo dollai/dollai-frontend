@@ -121,11 +121,11 @@ export default class StoryDetail extends Vue {
   private initDispatchMessage() {
     this.dispatchTid = setInterval(() => {
       if (!this.idleMessages.length) { return; }
-      this.moveToNextMessage();
+      this.moveIdleToActive();
     }, 200);
   }
 
-  private moveToNextMessage() {
+  private moveIdleToActive() {
     this.messages.push(this.idleMessages.splice(0, 1)[0]);
     this.currentMessageIndex = this.messages.length - 1;
   }
@@ -135,7 +135,7 @@ export default class StoryDetail extends Vue {
       await this.fetchSceneAction(item.next_scene);
     }
     await this.fetchMessage(item.next_message);
-    this.moveToNextMessage();
+    this.moveIdleToActive();
   }
 
   private async mounted() {
