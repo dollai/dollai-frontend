@@ -31,4 +31,5 @@ export default {
     const data: T.IMessage = require(`@/../cypress/fixtures/messages/${opt.uid}.json`);
     return data;
   },
+
 } as ActionTree<IStoryState, IRootState>;

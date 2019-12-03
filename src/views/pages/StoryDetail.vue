@@ -1,8 +1,15 @@
 <template lang="pug">
   .container
     .message-container(@click="nextAction")
-      .message(v-for="item in messages")
+      .message(
+        v-for="item in messages"
+      )
         span {{ item.content }}
+        span(
+          v-if="item.kind === 'objectives' && item.objective_options"
+          v-for="opt in item.objective_options"
+        )
+          | {{ opt.content }}
 </template>
 
 <script lang="ts">
@@ -25,6 +32,7 @@ export default class StoryDetail extends Vue {
   @storyStore.Action('fetchStory') private fetchStoryAction!: (code: string) => Promise<any>;
   @storyStore.Action('fetchScene') private fetchSceneAction!: (uid: string) => Promise<any>;
   @storyStore.Action('fetchMessage') private fetchMessageAction!: (opt: {uid: string, params?: any}) => Promise<any>;
+  @storyStore.Action('fetchObjectiveOptions') private fetchObjectiveOptionsAction!: (uid: string) => Promise<any>;
 
   private story: T.IStory | null = null;
   private scene: T.IScene | null = null;
@@ -32,6 +40,7 @@ export default class StoryDetail extends Vue {
   private idleMessages: T.IMessage[] = [];
   private currentMessageIndex: number = -1;
   private dispatchTid: number | undefined = undefined;
+  private objectiveOptions: T.IObjectiveOption[] = [];
 
   private async fetchStory() {
     const code = this.$route.params.code;
@@ -50,6 +59,7 @@ export default class StoryDetail extends Vue {
       return;
     }
     const message = await this.fetchMessageAction({uid});
+    console.log(uid, message);
     this.idleMessages.push(message);
     this.currentMessageIndex = this.messages.length - 1;
   }
@@ -96,15 +106,9 @@ export default class StoryDetail extends Vue {
     const message = this.currentMessage as T.IMessage;
     if (!message.nexts || !message.nexts.length) { return; }
 
-    if (message.nexts.length === 1) {
+    if (message.kind === 'default' || message.kind === 'subjectives') {
       await this.fetchMessage(message.nexts[0]);
-    } else {
-      await this.fetchObjectives(message.uid);
     }
-  }
-
-  private async fetchObjectives(uid: string) {
-    console.log(uid);
   }
 
   private initDispatchMessage() {
