@@ -6,7 +6,10 @@
       .message(
         v-for="item in messages"
       )
-        span {{ item.content }}
+        message-default(
+          v-if="item.kind === 'default'"
+          :data="item"
+        )
         .objective-options(
           v-if="isVisibleObjectiveOptions(item)"
           v-for="opt in item.objective_options"
@@ -27,12 +30,14 @@
 import { Component, Prop, Vue } from 'vue-property-decorator';
 import { namespace } from 'vuex-class';
 import * as T from '@/store/story/types';
+import MessageDefault from '@/components/messages/MessageDefault.vue';
 
 const settingsStore = namespace('settings');
 const storyStore = namespace('story');
 
 @Component({
   components: {
+    MessageDefault,
   },
 })
 export default class StoryDetail extends Vue {
