@@ -2,7 +2,7 @@
   .container
     h3.title(v-if="title") {{ title }}
 
-    .message-container(@click="nextAction")
+    .messages-container(@click="nextAction")
       .message(
         v-for="item in messages"
       )
@@ -198,4 +198,7 @@ export default class StoryDetail extends Vue {
   color #fff
   font-size 0.8125rem
   padding 2px
+
+.messages-container
+  height calc(100vh - 100px)
 </style>
