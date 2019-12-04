@@ -41,7 +41,7 @@ export default class MessageDefault extends Vue {
   }
 
   private playYoutube(uid: string) {
-
+    console.log(uid);
   }
 }
 </script>

@@ -34,6 +34,7 @@
         allowscriptaccess="always"
         :src="`https://www.youtube.com/embed/${playingYoutubeVideo}?enablejsapi=1`"
       )
+    subjective-form.modal()
 </template>
 
 <script lang="ts">
@@ -41,6 +42,7 @@ import { Component, Prop, Vue } from 'vue-property-decorator';
 import { namespace } from 'vuex-class';
 import * as T from '@/store/story/types';
 import MessageDefault from '@/components/messages/MessageDefault.vue';
+import SubjectiveForm from '@/components/modals/SubjectiveForm.vue';
 
 const settingsStore = namespace('settings');
 const storyStore = namespace('story');
@@ -48,6 +50,7 @@ const storyStore = namespace('story');
 @Component({
   components: {
     MessageDefault,
+    SubjectiveForm,
   },
 })
 export default class StoryDetail extends Vue {
@@ -212,4 +215,8 @@ export default class StoryDetail extends Vue {
 
 .messages-container
   height calc(100vh - 100px)
+
+.modal
+  position fixed
+  z-index 500
 </style>
