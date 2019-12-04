@@ -14,4 +14,8 @@ export default {
       }
     });
   },
+
+  updatePlayingYoutubeVideo(state: IStoryState, uid: string | null) {
+    state.playingYoutubeVideo = uid;
+  },
 } as MutationTree<IStoryState>;

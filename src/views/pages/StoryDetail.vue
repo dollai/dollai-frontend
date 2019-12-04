@@ -24,6 +24,16 @@
           textarea(placeholder="글을 입력해 주세요.")
           button(@click.prevent="submitSubjectiveForm") 완료
           button(@click.prevent="cancelSubjectiveForm") 취소
+
+    .youtube-embed-container(v-show="playingYoutubeVideo")
+      iframe(
+        width="560" height="315"
+        class="youtube-frame"
+        frameborder="0" allow="autoplay; encrypted-media"
+        allowfullscreen
+        allowscriptaccess="always"
+        :src="`https://www.youtube.com/embed/${playingYoutubeVideo}?enablejsapi=1`"
+      )
 </template>
 
 <script lang="ts">
@@ -50,6 +60,7 @@ export default class StoryDetail extends Vue {
   @storyStore.Action('fetchScene') private fetchSceneAction!: (uid: string) => Promise<any>;
   @storyStore.Action('fetchMessage') private fetchMessageAction!: (opt: {uid: string, params?: any}) => Promise<any>;
   @storyStore.Action('fetchObjectiveOptions') private fetchObjectiveOptionsAction!: (uid: string) => Promise<any>;
+  @storyStore.Getter private playingYoutubeVideo!: string | null;
 
   private story: T.IStory | null = null;
   private scene: T.IScene | null = null;

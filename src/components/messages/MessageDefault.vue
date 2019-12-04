@@ -5,7 +5,18 @@
     .body
       .player-names
         | {{ players[0].name }}
-      .content {{ data.content }}
+      .content()
+        div(v-html="data.content")
+        div(v-if="data.style.template === 'youtube-embed'")
+          a(
+            :href="`https://youtu.be/${data.attachments[0].url}`"
+            target="_blank"
+          ) 영상 보러가기
+        div(v-else-if="data.style.template === 'link-url'")
+          a(
+            :href="data.attachments[0].url"
+            target="_blank"
+          ) 방문하기
 </template>
 
 <script lang="ts">
@@ -23,9 +34,14 @@ export default class MessageDefault extends Vue {
   @Prop() private data!: T.IMessage;
 
   @storyStore.Getter('players') private storyPlayers!: T.IPlayer[];
+  @storyStore.Mutation private updatePlayingYoutubeVideo!: void;
 
   private get players(): T.IPlayer[] {
     return this.storyPlayers.filter((o) => this.data.players.findIndex((p) => p.code === o.code));
+  }
+
+  private playYoutube(uid: string) {
+
   }
 }
 </script>

@@ -10,4 +10,8 @@ export default {
     return state.players;
   },
 
+  playingYoutubeVideo(state: IStoryState): string | null {
+    return state.playingYoutubeVideo;
+  },
+
 } as GetterTree<IStoryState, IRootState>;

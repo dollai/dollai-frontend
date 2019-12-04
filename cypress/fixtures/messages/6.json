@@ -8,7 +8,7 @@
   ],
   "prev": "5",
   "nexts": ["7"],
-  "content": "https://bit.ly/32kaHBL",
+  "content": null,
   "transition": {
     "code": "none"
   },
@@ -16,5 +16,8 @@
     "template": "link-url"
   },
   "attachments": [
+    {
+      "url": "https://bit.ly/32kaHBL"
+    }
   ]
 }
