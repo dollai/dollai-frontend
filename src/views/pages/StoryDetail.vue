@@ -45,6 +45,7 @@ export default class StoryDetail extends Vue {
   private header!: string | null;
 
   @settingsStore.Mutation private updateHeader!: (header: string | null) => void;
+  @storyStore.Action private fetchPlayers!: (params?: any) => Promise<any>;
   @storyStore.Action('fetchStory') private fetchStoryAction!: (code: string) => Promise<any>;
   @storyStore.Action('fetchScene') private fetchSceneAction!: (uid: string) => Promise<any>;
   @storyStore.Action('fetchMessage') private fetchMessageAction!: (opt: {uid: string, params?: any}) => Promise<any>;
@@ -179,6 +180,7 @@ export default class StoryDetail extends Vue {
   private async mounted() {
     this.initDispatchMessage();
     await this.fetchStory();
+    await this.fetchPlayers({ story: (this.story as T.IStory).code });
     this.updateHeader(this.story ? this.story.name : null);
     await this.nextAction();
   }
@@ -190,8 +192,6 @@ export default class StoryDetail extends Vue {
 </script>
 
 <style lang="stylus" scoped>
-.message-container
-  border: 1px solid #f00
 
 .title
   background-color #000

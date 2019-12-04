@@ -32,4 +32,10 @@ export default {
     return data;
   },
 
+  async fetchPlayers({ commit }, params?: any) {
+    // const qs = params ? `?${stringify(params)}` : '';
+    const data: PageNumberPaginationResponse<T.IPlayer> = require('@/../cypress/fixtures/players.json');
+    commit('addPlayers', data.results);
+    return data;
+  },
 } as ActionTree<IStoryState, IRootState>;

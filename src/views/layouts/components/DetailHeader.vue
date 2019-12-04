@@ -32,7 +32,7 @@ export default class DetailHeader extends Vue {
 .btn-gnb
   position absolute
   top 0
-  right 0
+  right 5px
   transform translate(0, 50%)
   width 34px
   height 34px
