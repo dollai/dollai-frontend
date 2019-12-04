@@ -1,5 +1,11 @@
 <template lang="pug">
-  span {{ data.content }}
+  .container.messaage-container.message-default
+    .players
+      img.player(:src="players[0].image")
+    .body
+      .player-names
+        | {{ players[0].name }}
+      .content {{ data.content }}
 </template>
 
 <script lang="ts">
@@ -14,7 +20,47 @@ const storyStore = namespace('story');
   },
 })
 export default class MessageDefault extends Vue {
-  @Prop()
-  private data!: T.IMessage;
+  @Prop() private data!: T.IMessage;
+
+  @storyStore.Getter('players') private storyPlayers!: T.IPlayer[];
+
+  private get players(): T.IPlayer[] {
+    return this.storyPlayers.filter((o) => this.data.players.findIndex((p) => p.code === o.code));
+  }
 }
 </script>
+
+<style lang="stylus" scoped>
+.message-default
+  display flex
+  justify-content flex-start
+  align-items flex-end
+  padding 18px 36px 10px 18px
+
+  .players
+    width 46px
+    height 46px
+    .player
+      border-radius 100%
+
+  .body
+    padding 12px 16px
+    margin-left 12px
+    text-align left
+    background-color #1bd9bf
+    border-top-left-radius 23px
+    border-top-right-radius 23px
+    border-bottom-right-radius 23px
+    min-width 248px
+    width 263px
+
+    .player-names
+      color #fff
+      font-size 0.9375rem
+      margin-bottom 5px
+
+    .content
+      color #fff
+      font-size 0.9375rem
+      line-height 1.33
+</style>
