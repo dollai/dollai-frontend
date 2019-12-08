@@ -9,11 +9,6 @@
         message-default(
           :data="item"
         )
-        .objective-options(
-          v-if="isVisibleObjectiveOptions(item)"
-          v-for="opt in item.objective_options"
-        )
-          .option(@click="chooseObjectiveOption(opt)") {{ opt.content }}
 
     .youtube-embed-container(v-show="playingYoutubeVideo")
       iframe(
@@ -28,6 +23,10 @@
       ref="subjectiveForm"
       @submitForm="submitSubjectiveForm"
     )
+    objective-options(
+      ref="objectiveOptions"
+      @chooseOption="chooseObjectiveOption"
+    )
 </template>
 
 <script lang="ts">
@@ -35,6 +34,7 @@ import { Component, Prop, Vue } from 'vue-property-decorator';
 import { namespace } from 'vuex-class';
 import * as T from '@/store/story/types';
 import MessageDefault from '@/components/messages/MessageDefault.vue';
+import ObjectiveOptions from '@/components/messages/ObjectiveOptions.vue';
 import SubjectiveForm from '@/components/modals/SubjectiveForm.vue';
 
 const settingsStore = namespace('settings');
@@ -43,6 +43,7 @@ const storyStore = namespace('story');
 @Component({
   components: {
     MessageDefault,
+    ObjectiveOptions,
     SubjectiveForm,
   },
 })
@@ -147,7 +148,10 @@ export default class StoryDetail extends Vue {
       await this.fetchMessage(message.nexts[0]);
     } else if (message.kind === 'subjectives') {
       this.isVisibleSubjectiveForm = true;
-      (this.$refs as any).subjectiveForm.show(this.currentMessage);
+      (this.$refs as any).subjectiveForm.show(message);
+    } else if (message.kind === 'objectives') {
+      (this.$refs as any).objectiveOptions.show(message);
+      this.moveToBottomMessageContainer();
     }
   }
 
