@@ -23,7 +23,7 @@
       ref="subjectiveForm"
       @submitForm="submitSubjectiveForm"
     )
-    objective-options(
+    objective-options.objective-options-container(
       ref="objectiveOptions"
       @chooseOption="chooseObjectiveOption"
     )
@@ -211,6 +211,7 @@ export default class StoryDetail extends Vue {
 </script>
 
 <style lang="stylus" scoped>
+@import "~@/assets/styles/variables.styl"
 
 .title
   background-color #000
@@ -222,7 +223,13 @@ export default class StoryDetail extends Vue {
   height calc(100vh - 100px)
   overflow-y auto
 
-.modal
+  .message:last-of-type
+    margin-bottom 150px
+
+.objective-options-container
   position fixed
   z-index 500
+  bottom 0
+  width $break-small-min
+  padding 22px
 </style>
