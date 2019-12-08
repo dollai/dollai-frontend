@@ -2,7 +2,7 @@
   .container
     h3.title(v-if="title") {{ title }}
 
-    .messages-container(@click="nextAction")
+    .messages-container(ref="messageContainer" @click="nextAction")
       .message(
         v-for="item in messages"
       )
@@ -172,6 +172,7 @@ export default class StoryDetail extends Vue {
   private moveIdleToActive() {
     this.messages.push(this.idleMessages.splice(0, 1)[0]);
     this.currentMessageIndex = this.messages.length - 1;
+    this.moveToBottomMessageContainer();
   }
 
   private async chooseObjectiveOption(item: T.IObjectiveOption) {
@@ -182,15 +183,19 @@ export default class StoryDetail extends Vue {
     this.moveIdleToActive();
   }
 
+  private moveToBottomMessageContainer() {
+    this.$nextTick(() => {
+      const el = ((this.$refs as any).messageContainer as Element);
+      el.scrollTop = el.scrollHeight;
+    });
+  }
+
   private async mounted() {
     this.initDispatchMessage();
     await this.fetchStory();
     await this.fetchPlayers({ story: (this.story as T.IStory).code });
     this.updateHeader(this.story ? this.story.name : null);
     await this.nextAction();
-
-    // temp
-    (this.$refs as any).subjectiveForm.show(this.currentMessage);
   }
 
   private beforeDestroy() {
