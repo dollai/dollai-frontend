@@ -151,7 +151,9 @@ export default class StoryDetail extends Vue {
       (this.$refs as any).subjectiveForm.show(message);
     } else if (message.kind === 'objectives') {
       (this.$refs as any).objectiveOptions.show(message);
-      this.moveToBottomMessageContainer();
+      this.$nextTick(() => {
+        this.moveToBottomMessageContainer();
+      });
     }
   }
 
