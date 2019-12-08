@@ -21,20 +21,24 @@ export default class DetailHeader extends Vue {
 </script>
 
 <style lang="stylus" scoped>
-.logo
-  padding 12px 0
-  text-align center
+@import '~@/assets/styles/variables.styl';
 
-.logo-image
-  width 100px
-  height 40px
+.header-container
+  background-color $navbar-bgcolor
+  .logo
+    padding 12px 0
+    text-align center
 
-.btn-gnb
-  position absolute
-  top 0
-  right 5px
-  transform translate(0, 50%)
-  width 34px
-  height 34px
+  .logo-image
+    width 100px
+    height 40px
+
+  .btn-gnb
+    position absolute
+    top 0
+    right 5px
+    transform translate(0, 50%)
+    width 34px
+    height 34px
 
 </style>

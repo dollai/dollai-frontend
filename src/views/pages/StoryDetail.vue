@@ -7,7 +7,6 @@
         v-for="item in messages"
       )
         message-default(
-          v-if="item.kind === 'default'"
           :data="item"
         )
         .objective-options(
@@ -148,6 +147,7 @@ export default class StoryDetail extends Vue {
       await this.fetchMessage(message.nexts[0]);
     } else if (message.kind === 'subjectives') {
       this.isVisibleSubjectiveForm = true;
+      (this.$refs as any).subjectiveForm.show(this.currentMessage);
     }
   }
 
@@ -209,6 +209,7 @@ export default class StoryDetail extends Vue {
 
 .messages-container
   height calc(100vh - 100px)
+  overflow-y auto
 
 .modal
   position fixed
