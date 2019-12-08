@@ -16,15 +16,6 @@
         )
           .option(@click="chooseObjectiveOption(opt)") {{ opt.content }}
 
-      .subjectives-form-container(v-show="isVisibleSubjectiveForm")
-        form.subjectives-form(
-          v-model="subjectiveForm"
-        )
-          h4 내 습관 실행 내용 입력하기
-          textarea(placeholder="글을 입력해 주세요.")
-          button(@click.prevent="submitSubjectiveForm") 완료
-          button(@click.prevent="cancelSubjectiveForm") 취소
-
     .youtube-embed-container(v-show="playingYoutubeVideo")
       iframe(
         width="560" height="315"
@@ -34,7 +25,10 @@
         allowscriptaccess="always"
         :src="`https://www.youtube.com/embed/${playingYoutubeVideo}?enablejsapi=1`"
       )
-    subjective-form.modal()
+    subjective-form.modal(
+      ref="subjectiveForm"
+      @submitForm="submitSubjectiveForm"
+    )
 </template>
 
 <script lang="ts">
@@ -73,10 +67,6 @@ export default class StoryDetail extends Vue {
   private dispatchTid: number | undefined = undefined;
   private objectiveOptions: T.IObjectiveOption[] = [];
   private isVisibleSubjectiveForm: boolean = false;
-  private subjectiveForm: T.ISubjectiveForm = {
-    message: null,
-    content: '',
-  };
 
   private get title(): string | null {
     return this.story ? this.story.name : null;
@@ -161,9 +151,10 @@ export default class StoryDetail extends Vue {
     }
   }
 
-  private async submitSubjectiveForm() {
+  private async submitSubjectiveForm(form: T.ISubjectiveForm) {
     this.isVisibleSubjectiveForm = false;
     const message = this.currentMessage as T.IMessage;
+    console.log(form);
     await this.fetchMessage(message.nexts[0]);
   }
 
@@ -197,6 +188,9 @@ export default class StoryDetail extends Vue {
     await this.fetchPlayers({ story: (this.story as T.IStory).code });
     this.updateHeader(this.story ? this.story.name : null);
     await this.nextAction();
+
+    // temp
+    (this.$refs as any).subjectiveForm.show(this.currentMessage);
   }
 
   private beforeDestroy() {

@@ -6,7 +6,7 @@
 
 <style lang="stylus">
 @import '~@/assets/styles/variables.styl';
-@import '~@/assets/styles/mixins.styl';
+@import '~@/assets/styles/buttons.styl';
 
 #app
   font-family 'Avenir', Helvetica, Arial, sans-serif
