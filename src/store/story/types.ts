@@ -44,6 +44,16 @@ export interface IMessage {
   objective_options?: IObjectiveOption[];
 }
 
+export interface IUserMessage {
+  uid: string;
+  user_story: string;
+  user: string;
+  message: IMessage | null;
+  objective_option: IObjectiveOption | null;
+  prev: string | null;
+  user_input: string | null;
+}
+
 export interface IPlayer {
   code: string;
   name: string;
