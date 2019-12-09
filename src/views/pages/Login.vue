@@ -1,10 +1,10 @@
 <template lang="pug">
-  .container
+  .login-container
     h2.title 로그인
 
     form.form(v-model="form" @submit.prevent="submit")
       .form-control
-        label(for="username") 아이디
+        label.form-label(for="username") 아이디
         input.form-input(
           id="username"
           placeholder="아이디를 입력하세요."
@@ -12,7 +12,7 @@
         )
 
       .form-control
-        label(for="password") 비밀번호
+        label.form-label(for="password") 비밀번호
         input.form-input(
           id="password"
           type="password"
@@ -21,7 +21,7 @@
         )
 
       .form-control.buttons
-        button.btn-login(type="button" @click="submit") 로그인
+        button.btn.btn-login.btn-submit(type="button" @click="submit") 로그인
 </template>
 
 <script lang="ts">
@@ -57,3 +57,42 @@ export default class Login extends Vue {
   }
 }
 </script>
+
+<style lang="stylus">
+.login-container
+  display flex
+  align-items center
+  justify-content center
+  height 80vh
+  flex-direction column
+
+  .title
+    font-size 1.2rem
+    font-weight 700
+
+  .form
+    padding 22px
+    width 100%
+
+    .form-control
+      margin 4px 0
+      display flex
+      justify-content center
+
+    .form-label
+      width 5rem
+      display inline-block
+      text-align left
+      padding 10px 0
+      margin-right 4px
+    .form-input
+      border-bottom 1px solid #cecece
+      padding 10px 8px
+
+  .buttons
+    display flex
+    justify-content space-between
+    padding-top 22px
+    .btn
+      flex 1 0 0
+</style>
