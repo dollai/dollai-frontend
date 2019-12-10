@@ -22,6 +22,7 @@
     subjective-form.modal(
       ref="subjectiveForm"
       @submitForm="submitSubjectiveForm"
+      @cancelForm="cancelSubjectiveForm"
     )
     objective-options.objective-options-container(
       ref="objectiveOptions"
@@ -160,12 +161,13 @@ export default class StoryDetail extends Vue {
   private async submitSubjectiveForm(form: T.ISubjectiveForm) {
     this.isVisibleSubjectiveForm = false;
     const message = this.currentMessage as T.IMessage;
-    console.log(form);
     await this.fetchMessage(message.nexts[0]);
   }
 
-  private cancelSubjectiveForm() {
+  private async cancelSubjectiveForm() {
     this.isVisibleSubjectiveForm = false;
+    const message = this.currentMessage as T.IMessage;
+    await this.fetchMessage(message.nexts[0]);
   }
 
   private initDispatchMessage() {
