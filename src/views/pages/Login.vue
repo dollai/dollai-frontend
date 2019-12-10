@@ -49,7 +49,14 @@ export default class Login extends Vue {
   @authStore.Action private postAuth!: (form: T.ILoginForm) => T.IUser;
 
   private async submit() {
-    this.postAuth(this.form);
+    try {
+      await this.postAuth(this.form);
+    } catch (e) {
+      alert('ID나 비밀번호가 일치하지 않습니다.');
+      return;
+    }
+    // temporary code
+    this.$router.push({ name: 'StoryDetail', params: { code: 'story1'} });
   }
 
   private mounted() {
