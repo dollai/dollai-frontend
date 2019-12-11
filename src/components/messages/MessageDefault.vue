@@ -6,7 +6,7 @@
       .player-names
         | {{ players[0].name }}
       .content()
-        div(v-html="data.content")
+        div(v-html="formattingUserName(data.content)")
         div(v-if="data.style.template === 'youtube-embed'")
           a(
             :href="`https://youtu.be/${data.attachments[0].url}`"
@@ -23,8 +23,13 @@
 import { Component, Prop, Vue } from 'vue-property-decorator';
 import { namespace } from 'vuex-class';
 import * as T from '@/store/story/types';
+import * as authT from '@/store/auth/types';
+import {
+  formatting,
+} from '@/filters/message';
 
 const storyStore = namespace('story');
+const authStore = namespace('auth');
 
 @Component({
   components: {
@@ -33,6 +38,8 @@ const storyStore = namespace('story');
 export default class MessageDefault extends Vue {
   @Prop() private data!: T.IMessage;
 
+  @authStore.Getter private user!: authT.IUser | null;
+  @authStore.Getter private anonymousUser!: authT.IUser;
   @storyStore.Getter('players') private storyPlayers!: T.IPlayer[];
   @storyStore.Mutation private updatePlayingYoutubeVideo!: void;
 
@@ -42,6 +49,18 @@ export default class MessageDefault extends Vue {
 
   private playYoutube(uid: string) {
     console.log(uid);
+  }
+
+  private formattingUserName(text: string | null) {
+    if (text === null) {
+      return null;
+    }
+    return formatting(text, {
+      userName: (this.user || this.anonymousUser).name,
+    });
+  }
+
+  private mounted() {
   }
 }
 </script>

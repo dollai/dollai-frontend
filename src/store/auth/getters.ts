@@ -9,4 +9,12 @@ export default {
     return state.user;
   },
 
+  anonymousUser(state: IAuthState): T.IUser {
+    return {
+      username: '',
+      name: '익명',
+      password: '',
+    };
+  },
+
 } as GetterTree<IAuthState, IRootState>;
