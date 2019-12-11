@@ -16,6 +16,18 @@ export default {
     const index = data.findIndex((o) => o.username === username && o.password === password);
     if (index !== -1) {
       commit('updateUser', data[index]);
+      localStorage.setItem('username', username);
+      return data[index];
+    }
+    throw Error;
+  },
+
+  async fetchUser({ commit }, username: string) {
+    const data: T.IUser[] = require('@/../cypress/fixtures/users.json');
+    const index = data.findIndex((o) => o.username === username);
+    if (index !== -1) {
+      commit('updateUser', data[index]);
+      localStorage.setItem('username', username);
       return data[index];
     }
     throw Error;

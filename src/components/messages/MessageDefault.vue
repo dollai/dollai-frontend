@@ -59,9 +59,6 @@ export default class MessageDefault extends Vue {
       userName: (this.user || this.anonymousUser).name,
     });
   }
-
-  private mounted() {
-  }
 }
 </script>
 

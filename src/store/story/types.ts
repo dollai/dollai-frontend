@@ -47,7 +47,8 @@ export interface IMessage {
 export interface IUserMessage {
   uid: string;
   user_story: string;
-  user: string;
+  user: string | null;
+  kind: string;
   message: IMessage | null;
   objective_option: IObjectiveOption | null;
   prev: string | null;

@@ -7,7 +7,8 @@
         v-for="item in messages"
       )
         message-default(
-          :data="item"
+          v-if="item.kind === 'message'"
+          :data="item.message"
         )
 
     .youtube-embed-container(v-show="playingYoutubeVideo")
@@ -37,9 +38,11 @@ import * as T from '@/store/story/types';
 import MessageDefault from '@/components/messages/MessageDefault.vue';
 import ObjectiveOptions from '@/components/messages/ObjectiveOptions.vue';
 import SubjectiveForm from '@/components/modals/SubjectiveForm.vue';
+import * as authT from '@/store/auth/types';
 
 const settingsStore = namespace('settings');
 const storyStore = namespace('story');
+const authStore = namespace('auth');
 
 @Component({
   components: {
@@ -59,10 +62,11 @@ export default class StoryDetail extends Vue {
   @storyStore.Action('fetchMessage') private fetchMessageAction!: (opt: {uid: string, params?: any}) => Promise<any>;
   @storyStore.Action('fetchObjectiveOptions') private fetchObjectiveOptionsAction!: (uid: string) => Promise<any>;
   @storyStore.Getter private playingYoutubeVideo!: string | null;
+  @authStore.Getter private user!: authT.IUser | null;
 
   private story: T.IStory | null = null;
   private scene: T.IScene | null = null;
-  private messages: T.IMessage[] = [];
+  private messages: T.IUserMessage[] = [];
   private idleMessages: T.IMessage[] = [];
   private currentMessageIndex: number = -1;
   private dispatchTid: number | undefined = undefined;
@@ -90,14 +94,14 @@ export default class StoryDetail extends Vue {
       return;
     }
     const message = await this.fetchMessageAction({uid});
-    console.log(uid, message);
     this.idleMessages.push(message);
     this.currentMessageIndex = this.messages.length - 1;
   }
 
   private get isFinished(): boolean {
-    const message = this.messages[this.currentMessageIndex];
-    if (!message) { return false; }
+    const userMessage = this.messages[this.currentMessageIndex];
+    if (!userMessage) { return false; }
+    const message = userMessage.message as T.IMessage;
     return this.idleMessages.length === 0
       && !message.next_scenes
       && (!message.nexts || !message.nexts.length);
@@ -110,7 +114,7 @@ export default class StoryDetail extends Vue {
       && this.currentMessage.uid === message.uid;
   }
 
-  private get currentMessage(): T.IMessage | null {
+  private get currentMessage(): T.IUserMessage | null {
     return this.currentMessageIndex === -1 || !this.messages.length
       ? null
       : this.messages[this.currentMessageIndex];
@@ -142,15 +146,16 @@ export default class StoryDetail extends Vue {
     if (this.currentMessageIndex === -1 || !this.messages.length) { return; }
     if (!this.scene) { return; }
 
-    const message = this.currentMessage as T.IMessage;
+    const userMessage = this.currentMessage as T.IUserMessage;
+    const message = userMessage.message as T.IMessage;
     if (!message.nexts || !message.nexts.length) { return; }
 
-    if (message.kind === 'default') {
+    if (userMessage.kind === 'default') {
       await this.fetchMessage(message.nexts[0]);
-    } else if (message.kind === 'subjectives') {
+    } else if (userMessage.kind === 'subjectives') {
       this.isVisibleSubjectiveForm = true;
       (this.$refs as any).subjectiveForm.show(message);
-    } else if (message.kind === 'objectives') {
+    } else if (userMessage.kind === 'objectives') {
       (this.$refs as any).objectiveOptions.show(message);
       this.$nextTick(() => {
         this.moveToBottomMessageContainer();
@@ -160,14 +165,14 @@ export default class StoryDetail extends Vue {
 
   private async submitSubjectiveForm(form: T.ISubjectiveForm) {
     this.isVisibleSubjectiveForm = false;
-    const message = this.currentMessage as T.IMessage;
-    await this.fetchMessage(message.nexts[0]);
+    const userMessage = this.currentMessage as T.IUserMessage;
+    await this.fetchMessage(userMessage.message!.nexts[0]);
   }
 
   private async cancelSubjectiveForm() {
     this.isVisibleSubjectiveForm = false;
-    const message = this.currentMessage as T.IMessage;
-    await this.fetchMessage(message.nexts[0]);
+    const userMessage = this.currentMessage as T.IUserMessage;
+    await this.fetchMessage(userMessage.message!.nexts[0]);
   }
 
   private initDispatchMessage() {
@@ -178,9 +183,32 @@ export default class StoryDetail extends Vue {
   }
 
   private moveIdleToActive() {
-    this.messages.push(this.idleMessages.splice(0, 1)[0]);
+    this.convertMessageToUserMessage(this.idleMessages.splice(0, 1)[0]);
     this.currentMessageIndex = this.messages.length - 1;
     this.moveToBottomMessageContainer();
+  }
+
+  private convertMessageToUserMessage(message: T.IMessage) {
+    const data = {
+      user: this.user ? this.user.username : '',
+      message,
+    };
+    this.addToUserMessage('message', data);
+  }
+
+  private addToUserMessage(kind: string, data: any) {
+    const message = {
+      uid: `${(new Date().getDate())}`,
+      user_story: this.story!.code,
+      user: null,
+      kind,
+      message: null,
+      objective_option: null,
+      prev: null,
+      user_input: null,
+    };
+    Object.assign(message, data);
+    this.messages.push(message);
   }
 
   private async chooseObjectiveOption(item: T.IObjectiveOption) {
