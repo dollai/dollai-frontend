@@ -14,6 +14,10 @@
           v-else-if="item.kind === 'subjective'"
           :text="item.user_input"
         )
+        subjective-answer(
+          v-else-if="item.kind === 'objective'"
+          :text="item.objective_option.content"
+        )
 
     .youtube-embed-container(v-show="playingYoutubeVideo")
       iframe(
@@ -224,6 +228,9 @@ export default class StoryDetail extends Vue {
     if (item.next_scene !== null) {
       await this.fetchSceneAction(item.next_scene);
     }
+    this.addToUserMessage('objective', {
+      objective_option: item,
+    });
     await this.fetchMessage(item.next_message);
     this.moveIdleToActive();
   }
