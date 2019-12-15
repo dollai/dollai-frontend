@@ -150,12 +150,12 @@ export default class StoryDetail extends Vue {
     const message = userMessage.message as T.IMessage;
     if (!message.nexts || !message.nexts.length) { return; }
 
-    if (userMessage.kind === 'default') {
+    if (message.kind === 'default') {
       await this.fetchMessage(message.nexts[0]);
-    } else if (userMessage.kind === 'subjectives') {
+    } else if (message.kind === 'subjectives') {
       this.isVisibleSubjectiveForm = true;
       (this.$refs as any).subjectiveForm.show(message);
-    } else if (userMessage.kind === 'objectives') {
+    } else if (message.kind === 'objectives') {
       (this.$refs as any).objectiveOptions.show(message);
       this.$nextTick(() => {
         this.moveToBottomMessageContainer();
