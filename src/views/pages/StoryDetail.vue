@@ -10,6 +10,10 @@
           v-if="item.kind === 'message'"
           :data="item.message"
         )
+        subjective-answer(
+          v-else-if="item.kind === 'subjective'"
+          :text="item.user_input"
+        )
 
     .youtube-embed-container(v-show="playingYoutubeVideo")
       iframe(
@@ -37,6 +41,7 @@ import { namespace } from 'vuex-class';
 import * as T from '@/store/story/types';
 import MessageDefault from '@/components/messages/MessageDefault.vue';
 import ObjectiveOptions from '@/components/messages/ObjectiveOptions.vue';
+import SubjectiveAnswer from '@/components/messages/SubjectiveAnswer.vue';
 import SubjectiveForm from '@/components/modals/SubjectiveForm.vue';
 import * as authT from '@/store/auth/types';
 
@@ -49,6 +54,7 @@ const authStore = namespace('auth');
     MessageDefault,
     ObjectiveOptions,
     SubjectiveForm,
+    SubjectiveAnswer,
   },
 })
 export default class StoryDetail extends Vue {
@@ -166,6 +172,9 @@ export default class StoryDetail extends Vue {
   private async submitSubjectiveForm(form: T.ISubjectiveForm) {
     this.isVisibleSubjectiveForm = false;
     const userMessage = this.currentMessage as T.IUserMessage;
+    this.addToUserMessage('subjective', {
+      user_input: form.content,
+    });
     await this.fetchMessage(userMessage.message!.nexts[0]);
   }
 
