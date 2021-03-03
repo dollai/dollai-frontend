@@ -39,7 +39,7 @@
     "cypress-vue-unit-test": "^1.11.3",
     "i": "^0.3.6",
     "npm": "^6.11.3",
-    "pug": "^2.0.4",
+    "pug": "^3.0.1",
     "pug-plain-loader": "^1.0.0",
     "start-server-and-test": "^1.10.0",
     "stylus": "^0.54.5",
