@@ -37,7 +37,7 @@
     "babel-core": "7.0.0-bridge.0",
     "cypress": "^3.4.1",
     "cypress-vue-unit-test": "^1.11.3",
-    "i": "^0.3.6",
+    "i": "^0.3.7",
     "npm": "^6.11.3",
     "pug": "^2.0.4",
     "pug-plain-loader": "^1.0.0",
